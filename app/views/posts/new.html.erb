@@ -1,0 +1,17 @@
+<h1> 
+
+<%= form_for @post do |f| %>
+  <div id = "post-info">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div id = "post-info">
+    <%= f.label :body %>
+    <%= f.text_area :body, cols: "30", rows: "10"%>
+  </div>
+  <%= f.label :category %>
+  <%= select_tag(:category_id, options_for_select([['Arts and Culture', 1], ['Buisness', 2], ['Beauty and Hair', 3], ['Cooking', 4], ['Education', 5], ['Health and Fitness', 6], ['Law and Government', 7],['Music', 8] , ['Technology', 9], ['Writing', 10], ['Other', 11] ])) %>
+  <div id = "post-info">
+  <%= f.submit %>
+  </div>
+<% end %>
