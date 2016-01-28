@@ -1,0 +1,4 @@
+<% @posts.each do |post| %>
+<%= link_to post.title, root_path %>
+<%= post.user_id.usernme %>
+<% end %>

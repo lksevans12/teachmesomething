@@ -2,15 +2,21 @@
 
 <%= form_for @post do |f| %>
   <div id = "post-info">
-    <%= f.label :title %>
+    <%= f.label 'What are you teaching about today?'%>
     <%= f.text_field :title %>
   </div>
   <div id = "post-info">
-    <%= f.label :body %>
+    <%= f.label 'Teach Away!' %>
     <%= f.text_area :body, cols: "30", rows: "10"%>
   </div>
+  <div id = "post-info">
+    <%= f.label 'Do you have a website?'%>
+    <%= f.text_field :website%>
+  </div>
+  <div id = "post-info">
   <%= f.label :category %>
-  <%= select_tag(:category_id, options_for_select([['Arts and Culture', 1], ['Buisness', 2], ['Beauty and Hair', 3], ['Cooking', 4], ['Education', 5], ['Health and Fitness', 6], ['Law and Government', 7],['Music', 8] , ['Technology', 9], ['Writing', 10], ['Other', 11] ])) %>
+  <%= f.collection_select(:category_id, Category.all, :id, :category_name ) %>
+  </div>
   <div id = "post-info">
   <%= f.submit %>
   </div>

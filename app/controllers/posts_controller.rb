@@ -9,14 +9,18 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params.merge(user: 1))
-
+    post = Post.new(post_params.merge(user_id: 1))
+    if post.save
+      redirect_to root_path
+    else
+      "error"
+    end
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :website, :category_id,)
+    params.require(:post).permit(:title, :body, :category_id,)
   end
 
 end
