@@ -8,7 +8,23 @@
 </head>
 <body>
 
+
+<div id = "nav-bar">
+  <ul>
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Create new post', new_post_path %></li>
+    <% if !current_user %>
+      <li><%= link_to 'Login', login_path %></li>
+      <li><%= link_to 'Signup', signup_path %></li>
+    <% else %>
+      <li><%= link_to current_user.username, user_path(current_user.id) %></li>
+      <li><%= link_to 'Logout', logout_path %>
+    <% end %>
+  </ul>
+</div>
+
 <%= yield %>
+
 
 </body>
 </html>
