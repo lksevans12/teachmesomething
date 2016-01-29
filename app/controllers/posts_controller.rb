@@ -9,12 +9,16 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params.merge(user_id: 1))
+    post = Post.new(post_params.merge(user_id: current_user.id))
     if post.save
       redirect_to root_path
     else
       "error"
     end
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   private

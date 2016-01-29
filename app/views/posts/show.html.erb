@@ -1,0 +1,4 @@
+<h1> <%= @post.title.capitalize %> </h1>
+<p> Created by: <%= link_to @post.user.username, user_path(@post.user_id) %> </p>
+<p> Published : <%= @post.created_at.strftime(" %b. %d, %Y") %>
+<p> <%= @post.body %></p>

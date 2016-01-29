@@ -1,0 +1,7 @@
+<h1> Welcome <%= @user.username %> </h1>
+<h3> Member since: <%= @user.created_at.strftime(" %b. %d, %Y") %> </h3>
+<h4> About: <%= @user.about %> </h4>
+<p> Website: <%= link_to @user.website, normalize_url(@user.website) %>  </p>
+<p> Facebook: <%= @user.facebook %>  </p>
+
+<p> Reviews: </p>

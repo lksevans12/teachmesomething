@@ -1,4 +1,8 @@
-<% @posts.each do |post| %>
-<%= link_to post.title, root_path %>
-<%= post.user_id.usernme %>
-<% end %>
+
+
+<div id = "all-posts">
+  <% @posts.each do |post| %>
+  <%= link_to post.title, post_path(post.id) %>
+  <%= post.user_id %>
+  <% end %>
+</div>

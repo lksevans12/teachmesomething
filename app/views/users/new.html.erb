@@ -1,0 +1,34 @@
+
+<h2> Welcome new user, please fill out the form below! </h3>
+
+<%= form_for @user do |f| %>
+<div id = "email">
+  <%= f.label 'Email*' %>
+  <%= f.text_field :email %>
+</div>
+<div id = "username">
+  <%= f.label 'Username*' %>
+  <%= f.text_field :username %>
+</div>
+<div id = "password">
+  <%= f.label 'Password*'%>
+  <%= f.password_field :password %>
+</div>
+<div id = "website">
+  <%= f.label :website %>
+  <%= f.text_field :website %>
+</div>
+<div id = "facebook">
+  <%= f.label :facebook %>
+  <%= f.text_field :facebook %>
+</div>
+<div id = "about">
+  <%= f.label 'About*' %>
+  <%= f.text_area :about %>
+</div>
+<div id = "submit">
+  <%= f.submit %>
+</div>
+<% end %>
+
+<p> Already have an account? <%= link_to 'Login', login_path %> </p>
