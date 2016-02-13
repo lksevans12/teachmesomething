@@ -8,6 +8,33 @@
 </div>
 
 <h1> <%= @post.title.capitalize %> </h1>
+  <% @post.average_rating.times do %>
+  <%= image_tag("star.png", size: "20x20") %>
+<% end %></p>
 <p> Created by: <%= link_to @post.user.username, user_path(@post.user_id) %> </p>
 <p> Published : <%= @post.created_at.strftime(" %b. %d, %Y") %>
 <p> <%= @post.body %></p>
+
+
+<h4> Reviews (<%= @post.reviews.count %>) </h4>
+<% unless current_user == @post %>
+  <p><%= link_to "Add a Review", new_post_review_path(@post), class: "btn btn-default" %></p>
+<% end %>
+
+<ul>
+  <% @post.reviews.each do |review| %>
+  <li>Rating:
+    <% review.score.times do %>
+      <%= image_tag("star.png", size: "20x20") %>
+    <% end %>
+  </li>
+
+  <li>From <%=link_to review.reviewer.username, user_path(review.reviewer) %>
+  on <%= review.created_at.strftime("%B %d, %Y") %> <br>
+  <%= review.body %>
+  <p><% if review.user_id == current_user.id %>
+    <%= link_to "Delete Review", post_review_path(post_id: @post, id: review), method: :delete %></p>
+  <% end %>
+  </li>
+  <% end %>
+</ul>
