@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name=viewport content="width=device-width,initial-scale=1">
   <title>TeachMeSomething</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
@@ -30,7 +31,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li><%= link_to current_user.username %> , user_path(current_user.id) %></li>
+          <li><%= link_to "Welcome, #{current_user.username}", user_path(current_user.id) %></li>
           <li><%= link_to 'Signout', logout_path %></li>
         <% else %>
           <li><%= link_to 'Login', login_path %></li>
@@ -41,8 +42,19 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<%= yield %>
+<div class = "container">
+  <div class="col-xs-6 col-sm-2 pull-right" id = "cat">
+    <div class = "bg-red">
+      <h4> Categories </h4>
+        <% @categories.each do |category| %>
+          <p><%= link_to category.category_name, category_path(category.id) %></p>
+        <% end %>
+    </div>
+  </div>
 
+
+<%= yield %>
+</div>
 
 </body>
 </html>

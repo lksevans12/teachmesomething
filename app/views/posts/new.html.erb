@@ -1,19 +1,19 @@
-<h1> 
-
-<%= form_for @post do |f| %>
-  <div id = "post-info">
-    <%= f.label 'What are you teaching about today?'%>
-    <%= f.text_field :title %>
-  </div>
-  <div id = "post-info">
-    <%= f.label 'Teach Away!' %>
-    <%= f.text_area :body, cols: "30", rows: "10"%>
-  </div>
-  <div id = "post-info">
-  <%= f.label :category %>
-  <%= f.collection_select(:category_id, Category.all, :id, :category_name ) %>
-  </div>
-  <div id = "post-info">
-  <%= f.submit %>
-  </div>
-<% end %>
+<div class="form-group">
+  <%= form_for @post do |f| %>
+    <div class="form-group">
+      <%= f.label 'What are you teaching about today?'%>
+      <%= f.text_field :title %>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Teach Away!' %>
+      <%= f.text_area :body, cols: "30", rows: "10"%>
+    </div>
+    <div class="form-group">
+    <%= f.label :category %>
+    <%= f.collection_select(:category_id, Category.all, :id, :category_name ) %>
+    </div>
+    <div class="form-group">
+    <%= f.submit %>
+    </div>
+  <% end %>
+</div>

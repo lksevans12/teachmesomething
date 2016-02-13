@@ -1,8 +1,10 @@
+<div class = "welcome">
+  <h2 class = "text-center"> What do you want to learn about today? </h2>
+</div>
 
-
-<div id = "all-posts">
+<div class= "col-xs-8 col-sm-6 col-md-8 pull-left">
   <% @posts.each do |post| %>
-  <%= link_to post.title, post_path(post.id) %>
-  <%= post.user_id %>
+  <p><%= link_to post.title, post_path(post.id) %></p>
+  <p>By: <%= post.user.username %></p>
   <% end %>
 </div>
