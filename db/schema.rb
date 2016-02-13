@@ -51,14 +51,14 @@ ActiveRecord::Schema.define(version: 20160122010943) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.integer  "user_id",     null: false
-    t.integer  "rating_id"
-    t.string   "rating_type"
-    t.text     "body",        null: false
-    t.integer  "score",       null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id",         null: false
+    t.integer  "reviewable_id"
+    t.string   "reviewable_type"
+    t.text     "body",            null: false
+    t.integer  "score",           null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -2,10 +2,14 @@ Rails.application.routes.draw do
 
   root to: 'posts#index'
   resources :categories, only: [:index, :show]
-  resources :posts
-  resources :users, only: [:new,:create,:show]
+  resources :posts do
+    resources :reviews, only: [:new, :create, :destroy]
+  end
+  resources :users do
+    resources :reviews, only: [:new, :create, :destroy]
+  end
   resource :sessions, only: [:create]
-  resources :ratings, only: [:new, :create, :destroy]
+  
 
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new'
