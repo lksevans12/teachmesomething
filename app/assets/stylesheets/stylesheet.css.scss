@@ -1,9 +1,25 @@
 #cat{
-  background-color: rgba(192,192,192,1);
+  border-left: 2px solid black;
   height: 100%;
   min-height:100%;
   position: static;
   padding-right: 3em;
+}
+
+#new-post{
+  margin-top: 2em;
+}
+
+#new-post-info{
+  text-align: center;
+}
+
+a{
+  color:black;
+}
+
+li{
+  list-style-type:none;
 }
 
 .text-center {
@@ -26,8 +42,12 @@
   margin-bottom: 1em;
 }
 
-html, body, .container-fluid { 
+html, body, .container { 
   height: 100%;
+}
+
+html, body, { 
+  width: 100%;
 }
 
 .navbar {

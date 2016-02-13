@@ -42,11 +42,22 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class = "container-fluid">
+<div class = "container">
   
 <%= yield %>
 
 </div>
+
+<% if flash.any? %>
+  <div id="flash" class="container">
+    <% flash.each do |type, message| %>
+      <div class="<%= type %> ">
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 
 </body>
 </html>
