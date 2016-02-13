@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_digest, null:false
       t.string :website
       t.string :facebook
-      t.string :about, null:false
+      t.string :about
 
       t.timestamps null: false
     end
