@@ -1,23 +1,39 @@
-<div class="form-group">
+<h2 id = "new-post-info"> We're so glad you want to share your knowledge! Please follow the guidelines while filling out the form below! </h2>
+
+
+<div id = "new-post">
   <%= form_for @post do |f| %>
+  <div class="row">
     <div class="form-group">
-      <%= f.label 'What are you teaching about today?'%>
-      <%= f.text_field :title %>
+      <%= f.label 'What are you teaching about today?', class: "col-xs-12"%>
+      <%= f.text_field :title, class: "col-xs-6" %>
     </div>
+  </div>
+
+  <div class="row">
     <div class="form-group">
-      <%= f.label 'Teach Away!' %>
-      <%= f.text_area :body, cols: "30", rows: "10"%>
+      <%= f.label 'Teach Away!', class: "col-xs-12" %>
+      <%= f.text_area :body, cols: "30", rows: "10", class: "col-xs-6"%>
     </div>
+  </div>
+
+  <div class="row">
     <div class="form-group">
-    <%= f.label :category %>
-    <%= f.collection_select(:category_id, Category.all, :id, :category_name ) %>
+    <%= f.label :category, class: "col-xs-12" %>
+    <%= f.collection_select(:category_id, Category.all, :id, :category_name, class: "col-xs-16") %>
     </div>
+  </div>
+
+  <div class="row">
     <div class="form-group">
-    <%= f.submit %>
+    <%= f.submit 'Create Post', class: "btn btn-primary" %>
     </div>
+  </div>
   <% end %>
 </div>
 
 <div class = "tips">
+  <div class = "col-xs-6 pull-right">
 
+  </div>
 </div>
