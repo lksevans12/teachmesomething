@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
       @user = User.find(params[:user_id])
       @review = @user.reviews.build(review_params)
     else
-      @post = post.find(params[:post_id])
+      @post =Post.find(params[:post_id])
       @review = @post.reviews.build(review_params)
     end
     if @review.save

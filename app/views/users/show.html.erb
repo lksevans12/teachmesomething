@@ -24,25 +24,50 @@
 <p> Website: <%= link_to URI.split(@user.website)[2], normalize_url(@user.website) %>  </p>
 <p> Facebook: <%= link_to URI.split(@user.facebook)[2], normalize_url(@user.facebook) %>  </p>
 
-<h4> Reviews (<%= @user.reviews.count %>) </h4>
-<% unless current_user == @user %>
-  <p><%= link_to "Add a Review", new_user_review_path(@user), class: "btn btn-default" %></p>
-<% end %>
+<div class = "tabbable">
+  <ul class = "nav nav-tabs" id = "proftabs">
+    <li class="active"><a href = "#user-posts" data-toggle = "tab"> Posts</a></li>
+    <li><a href = "#user-reviews" data-toggle = "tab">Reviews (<%= @user.reviews.count %>)</a></li>
+    <li><a href = "#favorites" data-toggle = "tab"> Favorites</a></li>
+  </ul>
 
-<ul>
-  <% @user.reviews.each do |review| %>
-  <li>Rating:
-    <% review.score.times do %>
-      <%= image_tag("star.png", size: "20x20") %>
-    <% end %>
-  </li>
+  <div class = "tab-content">
+    <div class="tab-pane active" id="user-posts">
+      <ol>
+        <h4><%= @user.username %>'s posts: </h4>
+        <% @user.posts.each do |post| %>
+         <li> <%= link_to post.title, post_path(post.id) %>(post.category)</li>
+        <% end %>
+      </ol>
+    </div>
 
-  <li>From <%=link_to review.reviewer.username, user_path(review.reviewer) %>
-  on <%= review.created_at.strftime("%B %d, %Y") %> <br>
-  <%= review.body %>
-  <p><% if review.user_id == current_user.id %>
-    <%= link_to "Delete Review", user_review_path(user_id: @user, id: review), method: :delete %></p>
-  <% end %>
-  </li>
-  <% end %>
-</ul>
+    <div class="tab-pane" id="user-reviews">
+
+      <% unless current_user == @user %>
+        <p><%= link_to "Add a Review", new_user_review_path(@user), class: "btn btn-default" %></p>
+      <% end %>
+
+      <ul>
+        <% @user.reviews.each do |review| %>
+        <li>Rating:
+          <% review.score.times do %>
+            <%= image_tag("star.png", size: "20x20") %>
+          <% end %>
+        </li>
+
+        <li>From <%=link_to review.reviewer.username, user_path(review.reviewer) %>
+        on <%= review.created_at.strftime("%B %d, %Y") %> <br>
+        <%= review.body %>
+        <p><% if review.user_id == current_user.id %>
+          <%= link_to "Delete Review", user_review_path(user_id: @user, id: review), method: :delete %></p>
+        <% end %>
+        </li>
+        <% end %>
+      </ul>
+   </div> 
+
+   <div class="tab-pane" id="favorites">
+   </div>
+
+  </div>
+</div>
