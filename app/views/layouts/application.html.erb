@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name=viewport content="width=device-width,initial-scale=1">
   <title>TeachMeSomething</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
@@ -25,12 +26,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= link_to 'New Post', new_post_path %></li>
-        <li><a href="#">Link</a></li>
+        <li><%= link_to 'Trending', categories_path %></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li><%= link_to current_user.username %> , user_path(current_user.id) %></li>
+          <li><%= link_to "Welcome, #{current_user.username}", user_path(current_user.id) %></li>
           <li><%= link_to 'Signout', logout_path %></li>
         <% else %>
           <li><%= link_to 'Login', login_path %></li>
@@ -41,7 +42,21 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<div class = "container">
+  
 <%= yield %>
+
+</div>
+
+<% if flash.any? %>
+  <div id="flash" class="container">
+    <% flash.each do |type, message| %>
+      <div class="<%= type %> ">
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
 
 
 </body>

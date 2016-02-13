@@ -1,0 +1,39 @@
+<h2>Edit Profile</h2>
+
+<%= form_for @user, html: { multipart: true } do |f| %>
+
+<div class="row">
+  <div id = "email-contact" class="form-group">
+    <%=f.label 'Email (required to update account)*', class: "col-xs-12" %>
+    <%= f.text_field :email, class: "col-xs-9" %>
+  </div>
+</div>
+
+<div class="row">
+  <div id = "user-personalization" class="form-group">
+    <%= f.label :website, class: "col-xs-12" %>
+    <%= f.text_field :website, class: "col-xs-9" %>
+  </div>
+</div>
+
+<div class="row">
+  <div id = "user-facebook" class="form-group">
+    <%= f.label :facebook, class: "col-xs-12" %>
+    <%= f.text_field :facebook, class: "col-xs-9" %>
+  </div>
+</div>
+
+<div class="row">
+  <div id = "user-about" class="form-group">
+    <%= f.label :about, class: "col-xs-12" %>
+    <%= f.text_area :about,cols: "30", rows: "10", class: "col-xs-9" %>
+  </div>
+</div>
+
+<div class="row">
+  <div id = "edit-user-submit" class="form-group">
+    <%= f.submit %>
+  </div>
+</div>
+
+<% end %>

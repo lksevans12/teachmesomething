@@ -2,32 +2,52 @@
 <h2> Welcome new user, please fill out the form below! </h3>
 
 <%= form_for @user do |f| %>
-<div id = "email">
-  <%= f.label 'Email*' %>
-  <%= f.text_field :email %>
+<div class="row">
+  <div id = "email">
+    <%= f.label 'Email*', class: "col-xs-12" %>
+    <%= f.text_field :email, class: "col-xs-9" %>
+  </div>
 </div>
-<div id = "username">
-  <%= f.label 'Username*' %>
-  <%= f.text_field :username %>
+
+<div class="row">
+  <div id = "username">
+    <%= f.label 'Username*', class: "col-xs-12" %>
+    <%= f.text_field :username, class: "col-xs-9" %>
+  </div>
 </div>
-<div id = "password">
-  <%= f.label 'Password*'%>
-  <%= f.password_field :password %>
+
+<div class="row">
+  <div id = "password">
+    <%= f.label 'Password*', class: "col-xs-12"%>
+    <%= f.password_field :password , class: "col-xs-9"%>
+  </div>
 </div>
-<div id = "website">
-  <%= f.label :website %>
-  <%= f.text_field :website %>
+
+<div class="row">
+  <div id = "website">
+    <%= f.label :website, class: "col-xs-12" %>
+    <%= f.text_field :website, class: "col-xs-9" %>
+  </div>
 </div>
-<div id = "facebook">
-  <%= f.label :facebook %>
-  <%= f.text_field :facebook %>
+
+<div class="row">
+  <div id = "facebook">
+    <%= f.label :facebook, class: "col-xs-12" %>
+    <%= f.text_field :facebook, class: "col-xs-9" %>
+  </div>
 </div>
-<div id = "about">
-  <%= f.label 'About*' %>
-  <%= f.text_area :about %>
+
+<div class="row">
+  <div id = "about">
+    <%= f.label :about, class: "col-xs-12" %>
+    <%= f.text_area :about, class: "col-xs-9" %>
+  </div>
 </div>
-<div id = "submit">
-  <%= f.submit %>
+
+<div class="row">
+  <div id = "submit">
+    <%= f.submit 'Signup', class: "btn btn-primary" %>
+  </div>
 </div>
 <% end %>
 

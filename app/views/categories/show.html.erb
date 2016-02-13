@@ -1,3 +1,4 @@
+
 <div class="col-xs-6 col-sm-2 pull-right" id = "cat">
   <div class = "bg-red">
     <h3> Categories </h3>
@@ -7,7 +8,11 @@
   </div>
 </div>
 
-<h1> <%= @post.title.capitalize %> </h1>
-<p> Created by: <%= link_to @post.user.username, user_path(@post.user_id) %> </p>
-<p> Published : <%= @post.created_at.strftime(" %b. %d, %Y") %>
-<p> <%= @post.body %></p>
+<h2 id = "catname"> <%= @category.category_name %> </h2>
+
+<ol>
+<% @posts.each do |post| %>
+  <li><p><%= link_to post.title, post_path(post.id) %>
+  by <%= link_to post.user.username, user_path(post.user.id) %></p></li>
+<% end %>
+</ol>
