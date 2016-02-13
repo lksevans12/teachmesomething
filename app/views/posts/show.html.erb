@@ -1,3 +1,12 @@
+<div class="col-xs-6 col-sm-2 pull-right" id = "cat">
+  <div class = "bg-red">
+    <h3> Categories </h3>
+      <% @categories.each do |category| %>
+        <p><%= link_to category.category_name, category_path(category.id) %></p>
+      <% end %>
+  </div>
+</div>
+
 <h1> <%= @post.title.capitalize %> </h1>
 <p> Created by: <%= link_to @post.user.username, user_path(@post.user_id) %> </p>
 <p> Published : <%= @post.created_at.strftime(" %b. %d, %Y") %>

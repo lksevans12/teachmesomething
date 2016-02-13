@@ -1,10 +1,21 @@
+<div class="col-xs-6 col-sm-2 pull-right" id = "cat">
+  <div class = "bg-red">
+    <h3> Categories </h3>
+      <% @categories.each do |category| %>
+        <p><%= link_to category.category_name, category_path(category.id) %></p>
+      <% end %>
+  </div>
+</div>
+
 <div class = "welcome">
   <h2 class = "text-center"> What do you want to learn about today? </h2>
 </div>
 
 <div class= "col-xs-8 col-sm-6 col-md-8 pull-left">
   <% @posts.each do |post| %>
-  <p><%= link_to post.title, post_path(post.id) %></p>
-  <p>By: <%= post.user.username %></p>
+  <ol id = "post-list">
+    <li><p><%= link_to post.title, post_path(post.id) %></p></li>
+    <p id = "author">By: <%= link_to post.user.username, user_path(post.user.id) %></p>
+  </ol>
   <% end %>
 </div>
