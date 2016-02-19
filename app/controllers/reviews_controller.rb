@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_filter :authenticate_user!
 
   def new
     params[:user_id] ? @reviewable = User.find(params[:user_id]) : @reviewable = Post.find(params[:post_id])
@@ -14,11 +15,11 @@ class ReviewsController < ApplicationController
       @review = @post.reviews.build(review_params)
     end
     if @review.save
-      flash[:notice] = "Your review has been saved!"
+      flash[:success] = "Your review has been saved!"
       if @user
         redirect_to user_path(@user)
       else
-        flash[:alert] = @review.errors.full_messages
+        flash[:danger] = @review.errors.full_messages
         redirect_to post_path(@post)
       end
     else
@@ -31,7 +32,7 @@ class ReviewsController < ApplicationController
     @review = Review.find_by(id: params[:id])
     @review.destroy
     redirect_to user_path(@reviewable)
-    flash[:notice] = "Your review has been deleted"
+    flash[:success] = "Your review has been deleted"
   end
 
   private

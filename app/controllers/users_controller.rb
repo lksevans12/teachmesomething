@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_filter :authenticate_user!, only: [:show, :edit, :update, :delete]
 
   def new
     @user = User.new
@@ -19,7 +19,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @tags = Tag.all.order('updated_at ASC').limit(5)
     @categories = Category.all
+    if request.xhr?
+      return render :'reviews/new', {layout: false}
+    end
   end
 
   def edit
@@ -47,7 +51,7 @@ class UsersController < ApplicationController
   private
 
   def user_permit
-    params.require(:user).permit(:email, :username, :password, :about, :website, :facebook)
+    params.require(:user).permit(:email, :username, :password, :about, :website, :facebook, :avatar, :experience, :teacher)
   end
 
 end
