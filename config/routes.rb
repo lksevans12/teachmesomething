@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
 
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   root to: 'posts#index'
   resources :categories, only: [:index, :show]
   resources :posts do
     resources :reviews, only: [:new, :create, :destroy]
+    resources :favorite_posts, only: [:create, :destroy]
   end
   resources :users do
     resources :reviews, only: [:new, :create, :destroy]
+    resources :favorite_users, only: [:create, :destroy]
   end
+
+  get '/tags/:title' => 'tags#show', as: 'tags'
+
   resource :sessions, only: [:create]
   
 
