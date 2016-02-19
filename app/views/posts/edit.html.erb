@@ -6,17 +6,24 @@
   </ul>
 <% end %>
 
-<div class="col-xs-3 col-sm-2 pull-right" id = "cat">
-  <div class = "catdiv">
-    <h3>Categories</h3>
-      <% @categories.each do |category| %>
-        <p><%= link_to category.category_name, category_path(category.id) %></p>
-      <% end %>
-
-      <h3>Trending tags: </h3>
-      <% @tags.each do |tag| %>
-        <p><%= link_to tag.title, tags_path(tag.title) %></p>
-      <% end %>
+<div class="col-xs-3 col sm-3 col-md-2 pull-right">
+  <div class="sidebar-nav-fixed pull-right affix">
+    <div class="well">
+      <ul class="nav">
+        <li class="nav-header"><h3>Categories</h3></li>
+        <li>
+          <% @categories.each do |category| %>
+          <p><%= link_to category.category_name, category_path(category.id) %></p>
+          <% end %>
+        </li>
+        <li class="nav-header"><h3>Trending Tags</h3></li>
+        <li>
+          <% @tags.each do |tag| %>
+          <p><%= link_to tag.title, tags_path(tag.title) %></p>
+          <% end %>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -25,22 +32,21 @@
     <div class="row">
       <div class="form-group">
         <%= f.label 'What are you teaching about today?*', class: "col-xs-8"%>
-        <%= f.text_field :title, class: "col-xs-6" %>
+        <%= f.text_field :title, class: "col-xs-8" %>
       </div>
     </div>
 
     <div class="row">
       <div class="form-group">
-        <%= f.label 'Teach Away!(minumum of 500 words)*', class: "col-xs-8"  %>
-        <%= f.text_area :body, cols: "30", rows: "50", onkeyup: "countChar(this)", id: "field", class: "col-xs-6"%>
-        <div id="charNum" class = "col-xs-6"></div>
+        <%= f.label 'Edit body', class: "col-xs-12"  %>
+        <%= f.bootsy_area :body, cols: "120", rows: "30", id: "field", class: "col-xs-12 col-sm-6 col-md-8"%>
       </div>
     </div>
 
     <div class="row">
       <div class="form-group">
         <%= f.label 'Tags (separated by commas and NO spaces, please!!)', class: "col-xs-8"%>
-        <%= f.text_field :all_tags, class: "col-xs-6" %>
+        <%= f.text_field :all_tags, class: "col-xs-8" %>
       </div>
     </div>
 
@@ -50,8 +56,8 @@
 
     <div class="row">
       <div class="form-group">
-      <%= f.label :category, class: "col-xs-8" %>
-      <%= f.collection_select(:category_id, Category.all, :id, :category_name, class: "col-xs-6") %>
+      <%= f.label :category, class: "col-xs-12" %>
+      <%= f.collection_select(:category_id, Category.all, :id, :category_name, class: "col-xs-3") %>
       </div>
     </div>
 

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include Bootsy::Container
   has_secure_password
 
   has_many :posts
