@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160122010943) do
+ActiveRecord::Schema.define(version: 20160219185453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bootsy_image_galleries", force: :cascade do |t|
+    t.integer  "bootsy_resource_id"
+    t.string   "bootsy_resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_images", force: :cascade do |t|
+    t.string   "image_file"
+    t.integer  "image_gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "category_name", null: false
@@ -30,6 +44,15 @@ ActiveRecord::Schema.define(version: 20160122010943) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "entry_tags", force: :cascade do |t|
+    t.integer  "post_id",    null: false
+    t.integer  "tag_id",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "entry_tags", ["post_id", "tag_id"], name: "index_entry_tags_on_post_id_and_tag_id", unique: true, using: :btree
+
   create_table "favorites", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "favorited_id"
@@ -42,13 +65,17 @@ ActiveRecord::Schema.define(version: 20160122010943) do
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
-    t.string   "title",       null: false
-    t.text     "body",        null: false
-    t.integer  "user_id",     null: false
+    t.string   "title",              null: false
+    t.text     "body",               null: false
+    t.integer  "user_id",            null: false
     t.string   "website"
-    t.integer  "category_id", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "category_id",        null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -61,15 +88,27 @@ ActiveRecord::Schema.define(version: 20160122010943) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string   "email",           null: false
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
+    t.string   "email",               null: false
+    t.string   "username",            null: false
+    t.string   "password_digest",     null: false
+    t.boolean  "teacher",             null: false
     t.string   "website"
     t.string   "facebook"
+    t.string   "experience",          null: false
     t.string   "about"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end

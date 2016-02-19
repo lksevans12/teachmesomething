@@ -1,13 +1,26 @@
-<%= form_for [@reviewable, @review] do |f| %>
-  <div id = "review-body">
-    <%= f.label :review_body %>
-    <%= f.text_area :body %>
+<div id = "review-form">
+
+  <%= form_for [@reviewable, @review] do |f| %>
+
+  <div class = "row">
+    <div id = "review-body">
+      <%= f.label 'Review', class: "col-xs-12" %>
+      <%= f.text_area :body,cols: "10", rows: "5", class: "col-xs-6" %>
+    </div>
+  </div> 
+
+  <div class  = "row">
+    <div id = "review-score">
+      <%= f.label 'Score', class: "col-xs-12" %>
+      <%= f.select :score, [1,2,3,4,5], class: "col-xs-9" %>
+    </div>
   </div>
-  <div id = "review-score">
-    <%= f.label :review_score %>
-    <%= f.select :score, [1,2,3,4,5] %>
+
+  <div class = "row"
+    <div id = "submit-button">
+      <%= f.submit %>
+    </div>
   </div>
-  <div id = "submit-button">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <% end %>
+
+</div>

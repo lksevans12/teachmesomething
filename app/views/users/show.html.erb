@@ -1,48 +1,123 @@
-<div class="col-xs-6 col-sm-2 pull-right" id = "cat">
-  <div class = "bg-red">
-    <h3> Categories </h3>
-      <% @categories.each do |category| %>
-        <p><%= link_to category.category_name, category_path(category.id) %></p>
-      <% end %>
+<div class="col-xs-3 col sm-3 col-md-2 pull-right">
+  <div class="sidebar-nav-fixed pull-right affix">
+    <div class="well">
+      <ul class="nav">
+        <li class="nav-header"><h3>Categories</h3></li>
+        <li>
+          <% @categories.each do |category| %>
+          <p><%= link_to category.category_name, category_path(category.id) %></p>
+          <% end %>
+        </li>
+        <li class="nav-header"><h3>Trending Tags</h3></li>
+        <li>
+          <% @tags.each do |tag| %>
+          <p><%= link_to tag.title, tags_path(tag.title) %></p>
+          <% end %>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
+
 
 <% if current_user == @user %>
   <h1> Welcome <%= @user.username %> </h1>
   <%= link_to 'Edit', edit_user_path(@user.id), :class => "btn btn-default" %>
   <%= link_to 'Delete', user_path(@user.id), :method => :delete, :type => "button", :class => "btn btn-danger", :onclick => "myFunction()" %>
-
 <% else %>
   <h1> Meet <%= @user.username %> </h1>
 <% end %>
+
+<div id = "teacher">
+  <% if @user.teacher == true %>
+    <h4> Teacher </h4>
+  <% else %>
+    <h4> Student </h4>
+  <% end %>
+</div>
+
+  <div class = "col-xs-4 pull-right" id="user-profile-photo">
+    <%= image_tag @user.avatar.url(:small), class: "img-rounded img-responsive" %>
+  </div>
 
 <% @user.average_rating.times do %>
   <%= image_tag("star.png", size: "20x20") %>
 <% end %></p>
 <h3> Member since: <%= @user.created_at.strftime(" %b. %d, %Y") %> </h3>
 <h4> About: <%= @user.about %> </h4>
-<p> Website: <%= link_to URI.split(@user.website)[2], normalize_url(@user.website) %>  </p>
-<p> Facebook: <%= link_to URI.split(@user.facebook)[2], normalize_url(@user.facebook) %>  </p>
-
-<h4> Reviews (<%= @user.reviews.count %>) </h4>
-<% unless current_user == @user %>
-  <p><%= link_to "Add a Review", new_user_review_path(@user), class: "btn btn-default" %></p>
+<h4> Experience: <%= @user.experience %> </h4>
+<% if @user.website || @user.facebook %>
+  <p> Website: <%= link_to @user.website, normalize_url(@user.website) %>  </p>
+  <p> Facebook: <%= link_to @user.facebook, normalize_url(@user.facebook) %>  </p>
 <% end %>
 
-<ul>
-  <% @user.reviews.each do |review| %>
-  <li>Rating:
-    <% review.score.times do %>
-      <%= image_tag("star.png", size: "20x20") %>
+<div id="favorites-button">
+  <% unless current_user == @user %>
+    <% unless current_user.favorite_users.exists?(id: @user.id) %>
+      <%= link_to 'Add user to favorites', user_favorite_users_path(user_id: @user), method: :post, class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to 'Remove from favorites', user_favorite_user_path(user_id:@user.id, favorite_user_id: @user.id), method: :delete, class: "btn btn-default" %>
     <% end %>
-  </li>
+  <% end %>
+</div>
 
-  <li>From <%=link_to review.reviewer.username, user_path(review.reviewer) %>
-  on <%= review.created_at.strftime("%B %d, %Y") %> <br>
-  <%= review.body %>
-  <p><% if review.user_id == current_user.id %>
-    <%= link_to "Delete Review", user_review_path(user_id: @user, id: review), method: :delete %></p>
-  <% end %>
-  </li>
-  <% end %>
-</ul>
+<div id="profile-content" class="col-xs-6 col-md-8 pull-right">
+  <div class = "tabbable">
+    <ul class = "nav nav-tabs" id = "proftabs">
+      <li class="active"><a href = "#user-post" data-toggle = "tab"> Posts</a></li>
+      <li><a href = "#user-reviews" data-toggle = "tab">Reviews (<%= @user.reviews.count %>)</a></li>
+      <li><a href = "#favorites" data-toggle = "tab"> Favorites</a></li>
+    </ul>
+
+    <div class = "tab-content">
+      <div class="tab-pane active" id="user-post">
+          <ol>
+            <% @user.posts.each do |post| %>
+              <li><h4><%= link_to post.title, post_path(post) %></h4><p>Category: <%= link_to post.category.category_name, category_path(post.category_id) %></p></li>
+            <% end %>
+          </ol>
+      </div>
+
+      <div class="tab-pane" id="user-reviews">
+          <% unless current_user == @user %>
+            <p id= "user-rev"><%= link_to "Add a Review", new_user_review_path(@user) , class: "btn btn-default"  %></p>
+          <% end %>
+        <ul>
+          <% @user.reviews.each do |review| %>
+          <li>Rating:
+            <% review.score.times do %>
+              <%= image_tag("star.png", size: "20x20") %>
+            <% end %>
+          </li>
+
+          <li>From <%=link_to review.reviewer.username, user_path(review.reviewer) %>
+          on <%= review.created_at.strftime("%B %d, %Y") %> <br>
+          <%= review.body %>
+          <p>
+            <%= link_to "Delete Review", user_review_path(user_id: @user, id: review), method: :delete %></p>
+          <% end %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tab-pane" id="favorites">
+        <h4> Favorited Post: </h4>
+        <ul>
+          <% @user.favorites.each do |favorite| %>
+            <% if favorite.favorited_type == "Post" %>
+              <%= link_to favorite.favorited.title, post_path(favorite.favorited_id) %>
+            <% end %>
+          <% end %>
+        </ul>
+
+        <h4> Favorited Users: </h4>
+          <ul>
+            <% @user.favorites.each do |favorite| %>
+              <% if favorite.favorited_type == "User" %>
+                <%= link_to favorite.favorited.first_name, user_path(favorite.favorited_id) %>
+              <% end %>
+            <% end %>
+          </ul>
+      </div>
+  </div>
+</div>

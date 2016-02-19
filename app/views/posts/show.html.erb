@@ -1,13 +1,96 @@
-<div class="col-xs-6 col-sm-2 pull-right" id = "cat">
-  <div class = "bg-red">
-    <h3> Categories </h3>
-      <% @categories.each do |category| %>
-        <p><%= link_to category.category_name, category_path(category.id) %></p>
-      <% end %>
+<div class="col-xs-3 col sm-3 col-md-2 pull-right">
+  <div class="sidebar-nav-fixed pull-right affix">
+    <div class="well">
+      <ul class="nav">
+        <li class="nav-header"><h3>Categories</h3></li>
+        <li>
+          <% @categories.each do |category| %>
+          <p><%= link_to category.category_name, category_path(category.id) %></p>
+          <% end %>
+        </li>
+        <li class="nav-header"><h3>Trending Tags</h3></li>
+        <li>
+          <% @tags.each do |tag| %>
+          <p><%= link_to tag.title, tags_path(tag.title) %></p>
+          <% end %>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
-<h1> <%= @post.title.capitalize %> </h1>
-<p> Created by: <%= link_to @post.user.username, user_path(@post.user_id) %> </p>
-<p> Published : <%= @post.created_at.strftime(" %b. %d, %Y") %>
-<p> <%= @post.body %></p>
+<div class = "col-xs-9 col-sm-10 col-m-10">
+  <div class = "jumbotron" style = "background-image: url(<%= @post.photo.url %>)">
+    <h1> <%= @post.title.capitalize %> </h1>
+    <div class = "btn-larg" id = "edit">
+      <% if current_user %>
+      <% if current_user.id == @post.user_id %>
+      <%= link_to 'Edit post', edit_post_path(@post), class: "btn btn-primary" %>
+      <% end %>
+      <% end %>
+    </div>
+    <div class = "btn-lrg" id="favorites">
+      <% if current_user %>
+      <% unless current_user.favorite_posts.exists?(id: @post.id) %>
+      <%= link_to 'Add post to favorites', post_favorite_posts_path(post_id: @post), method: :post, class: "btn btn-primary" %>
+      <% else %>
+      <%= link_to 'Remove Favorite', post_favorite_post_path(post_id:@post.id, favorite_post_id: @post.id), method: :delete, class: "btn btn-default" %>
+      <% end %>
+      <% end %>
+      <% @post.average_rating.times do %>
+      <%= image_tag("star.png", size: "20x20", class: "img-rounded img-responsive") %>
+      <% end %></p>
+    </div>
+
+  <p id = "post-author"> By <%= link_to @post.user.username, user_path(@post.user_id) %> </p>
+  <p id = "post-author" class = "post-time"> <%= @post.created_at.strftime(" %b. %d, %Y") %></p>
+  </div>
+    <p> <%= @post.body.html_safe  %></p>
+    <p>Tags : <% @post.tags.map do |tag| %>
+      <%= link_to tag.title, tags_path(tag.title), class: "index-post-link" %>, 
+      <% end %>
+    </p>
+</div>
+
+
+
+<div id="profile-content" class="col-xs-6 col-md-8">
+  <div class = "tabbable">
+    <ul class = "nav nav-tabs" id = "proftabs">
+      <li class="active"><a href = "#user-post" data-toggle = "tab"> Posts in <%= @post.category.category_name %></a></li>
+      <li><a href = "#user-reviews" data-toggle = "tab">Reviews (<%= @post.reviews.count %>)</a></li>
+    </ul>
+
+    <div class = "tab-content">
+      <div class="tab-pane active" id="user-post">
+        <ol>
+          <% @postcat.each do |post| %>
+          <li><%= link_to post.title, post_path(post.id) %></li>
+          <% end %>
+        </ol>
+      </div>
+
+      <div class="tab-pane" id="user-reviews">
+        <% unless current_user == @post.user_id %>
+        <p><%= link_to "Add a Review", new_post_review_path(@post), class: "btn btn-default" %></p>
+        <% end %>
+        <ul>
+        <% @post.reviews.each do |review| %>
+        <li>Rating:
+          <% review.score.times do %>
+          <%= image_tag("star.png", size: "20x20") %>
+          <% end %>
+        </li>
+
+        <li>From <%=link_to review.reviewer.username, user_path(review.reviewer) %>
+          on <%= review.created_at.strftime("%B %d, %Y") %> <br>
+          <%= review.body %>
+          <p><% if review.user_id == current_user.id %>
+            <%= link_to "Delete Review", post_review_path(post_id: @post, id: review), method: :delete %></p>
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+  </div>
+</div>

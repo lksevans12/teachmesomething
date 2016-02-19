@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   has_many :favorites, dependent: :destroy
   has_many :favorite_posts, through: :favorites, source: :favorited, source_type: "Post", dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :favorited, source_type: "User", dependent: :destroy
-  # has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "missing-user.png"
+  has_attached_file :avatar, styles: { large: "500x500>", small: "200x200>", thumb: "100x100>" }, default_url: "missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   PASSWORD_FORMAT = /\A
   (?=.*\d)           # Must contain a digit

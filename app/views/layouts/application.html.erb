@@ -6,6 +6,7 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
 
@@ -26,7 +27,6 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= link_to 'New Post', new_post_path %></li>
-        <li><%= link_to 'Trending', categories_path %></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -42,21 +42,21 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<% flash.each do |type, message| %>
+  <div class="alert <%= bootstrap_class_for(type) %>">
+    <button class="close" data-dismiss="alert">×</button>
+    <%= message %>
+  </div>
+<% end %>
+
+
 <div class = "container">
   
 <%= yield %>
 
-</div>
 
-<% if flash.any? %>
-  <div id="flash" class="container">
-    <% flash.each do |type, message| %>
-      <div class="<%= type %> ">
-        <%= message %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+
+</div>
 
 
 </body>
