@@ -24,6 +24,13 @@
 </div>
 
 <div class="row">
+  <div id = "password">
+    <%= f.label 'Do you want to teach', class: "col-xs-12"%>
+    <%= f.check_box :teacher, class: "col-xs-9"%>
+  </div>
+</div>
+
+<div class="row">
   <div id = "website">
     <%= f.label :website, class: "col-xs-12" %>
     <%= f.text_field :website, class: "col-xs-9" %>
@@ -43,6 +50,17 @@
     <%= f.text_area :about, class: "col-xs-9" %>
   </div>
 </div>
+
+<div class="row">
+  <div id = "experience">
+    <%= f.label :experience, class: "col-xs-12" %>
+    <%= f.text_area :experience, class: "col-xs-9" %>
+  </div>
+</div>
+
+<div class="row">
+  <%= f.file_field :avatar %>
+</div
 
 <div class="row">
   <div id = "submit">
