@@ -1,19 +1,16 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user!, only: [:new,:create]
+  before_filter :authenticate_user!, only: [:new,:create, :edit, :update]
 
   def index
-    @posts = Post.all.get_posts_by_newest
-    @categories = Category.all
-    @tags = Tag.all.order('updated_at DESC').limit(5)
+    @posts = Post.all.get_posts_by_newest.limit(15)
   end
 
   def new 
     @post = Post.new
-    @categories = Category.all
-    @tags = Tag.all.order('updated_at DESC').limit(5)
   end
 
   def create
+    unless_teacher
     @post = Post.new(post_params.merge(user_id: current_user.id))
     if @post.save
       redirect_to post_path(@post.id)
@@ -25,8 +22,6 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @categories = Category.all
-    @tags = Tag.all.order('updated_at DESC').limit(5)
   end
 
   def update
@@ -43,8 +38,6 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @postcat = Post.all.where(category_id: @post.category.id)
-    @categories = Category.all
-    @tags = Tag.all.order('updated_at DESC').limit(5)
     @find_tag = EntryTag.find_by(post_id: @post)
   end
 
