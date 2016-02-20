@@ -1,60 +1,66 @@
-<% if @post.errors.any?  %>
-  <ul>
-  <% @post.errors.full_messages.each do |msg| %>
-      <li> <%= "#{msg}" %></li>
+<div class = "container">
+  <% if current_user.teacher == true %>
+    <% if @post.errors.any?  %>
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+          <li> <%= "#{msg}" %></li>
+      <% end %>
+      </ul>
+    <% end %>
+
+
+    <h2 id = "new-post-info"> We're so glad you want to share your knowledge! Please follow the guidelines while filling out the form below! </h2>
+
+
+    <div id = "new-post">
+      <%= form_for @post do |f| %>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label 'What are you teaching about today?*', class: "col-xs-7"%>
+          <%= f.text_field :title, class: "col-xs-6" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <%= f.label " ", class: "col-xs-7" %><br>
+          <%= f.bootsy_area :body, cols: "120", rows: "30", id: "field", class: "col-xs-12 col-sm-6 col-md-8" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <%= f.label 'Tags (separated by commas and NO spaces, please!!)', class: "col-xs-7"%>
+          <%= f.text_field :all_tags, class: "col-xs-6" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <%= f.label 'Please upload a cover photo for your post.' %>
+        <%= f.file_field :photo %>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+        <%= f.label :category, class: "col-xs-12" %>
+        <%= f.collection_select(:category_id, Category.all, :id, :category_name, class: "col-xs-6") %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+        <%= f.submit 'Create Post', class: "btn btn-primary" %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class = "tips">
+      <div class = "col-xs-5 pull-right">
+
+      </div>
+    </div>
+  <% else %>
+    <h1> We're so glad your interested in posting, however, you MUST be a 'teacher' to submit! <%= link_to 'Edit your status to become a teacher!' %>
   <% end %>
-  </ul>
-<% end %>
-
-
-<h2 id = "new-post-info"> We're so glad you want to share your knowledge! Please follow the guidelines while filling out the form below! </h2>
-
-
-<div id = "new-post">
-  <%= form_for @post do |f| %>
-  <div class="row">
-    <div class="form-group">
-      <%= f.label 'What are you teaching about today?*', class: "col-xs-7"%>
-      <%= f.text_field :title, class: "col-xs-6" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-      <%= f.label " ", class: "col-xs-7" %><br>
-      <%= f.bootsy_area :body, cols: "120", rows: "30", id: "field", class: "col-xs-12 col-sm-6 col-md-8" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-      <%= f.label 'Tags (separated by commas and NO spaces, please!!)', class: "col-xs-7"%>
-      <%= f.text_field :all_tags, class: "col-xs-6" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <%= f.label 'Please upload a cover photo for your post.' %>
-    <%= f.file_field :photo %>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-    <%= f.label :category, class: "col-xs-12" %>
-    <%= f.collection_select(:category_id, Category.all, :id, :category_name, class: "col-xs-6") %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-    <%= f.submit 'Create Post', class: "btn btn-primary" %>
-    </div>
-  </div>
-  <% end %>
-</div>
-
-<div class = "tips">
-  <div class = "col-xs-5 pull-right">
-
-  </div>
 </div>
