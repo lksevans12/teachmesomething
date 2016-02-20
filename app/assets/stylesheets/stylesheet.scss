@@ -1,3 +1,111 @@
+body,
+html {
+    width: 100%;
+    height: 100%;
+    overflow-x:hidden;
+    font-family: 'Playfair Display', serif;
+}
+
+.topnav {
+    font-size: 14px; 
+}
+
+.lead {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.section-heading-spacer {
+    float: left;
+    width: 450px;
+    border-top: 3px solid #e7e7e7;
+}
+
+.intro-header {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 2px;
+    text-align: center;
+    color: #black;
+    background: url(learn.png) no-repeat center center;
+    background-size: cover;
+    font-family: 'Playfair Display', serif;
+}
+
+.intro-message {
+    position: relative;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+
+.intro-message > h1 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 5em;
+    font-family: 'Playfair Display', serif;
+}
+
+.intro-divider {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.intro-message > h3 {
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-family: 'Playfair Display', serif;
+}
+
+@media(max-width:767px) {
+    .intro-message {
+        padding-bottom: 15%;
+    }
+
+    .intro-message > h1 {
+        font-size: 3em;
+    }
+
+    ul.intro-social-buttons > li {
+        display: block;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.intro-social-buttons > li:last-child {
+        margin-bottom: 0;
+    }
+
+    .intro-divider {
+        width: 100%;
+    }
+}
+
+.portfolio-item {
+    margin-bottom: 25px;
+    display: block;
+    text-align: center;
+}
+
+.all-posts{
+  padding-top: 2em;
+}
+
+div.transbox {
+  margin: 30px;
+  background-color: #ffffff;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+div.transbox h1 {
+  margin: 5%;
+  font-weight: bold;
+  color: black;
+}
+
+#post-body{
+  margin: auto;
+}
+
 .sidebar-nav-fixed {
   width:20%;
 }
@@ -8,12 +116,13 @@
 
 .jumbotron{
   text-align: center;
-  color: white;
+  color: black;
   width: 100%;
   height: 100%;
   background-size: cover;
   overflow: hidden;
   background-color: grey;
+  font-weight: bold;
 }
 
 #post-img{
@@ -30,27 +139,39 @@
     body {
         font-size: 1.5em; /* 1.5x default size */
     }
-    h4, h3{
-      font-size: 2em;
+    h4, h3,h2, h1{
+      font-size: 3em;
+      font-weight: bold;
     }
+    p{
+      font-size: 2.5em;
+    }
+
 }
 
 @media all and (max-width: 1000px) { /* screen size until 1000px */
     body {
         font-size: 1.2em; /* 1.2x default size */
         }
-    h4,h3{
-      font-size: 1.5em;
+    h4,h3,h2,h1{
+      font-size: 2.5em;
+      font-weight: bold;
       }
+    p{
+      font-size: 2em;
+    }
     }
 @media all and (max-width: 500px) { /* screen size until 500px */
     body,  {
         font-size: 0.8em; /* 0.8x default size */
         }
-    h4,h3 {
-        font-size: 1.3em;
+    h4,h3,h2,h1 {
+        font-size: 2em;
+        font-weight: bold;
     }
-
+    p{
+      font-size: 1.5em;
+    }
 }
 
 #favorites-button{
@@ -77,41 +198,16 @@ li{
   list-style-type:none;
 }
 
-.text-center {
-  text-align: center;
-}
-
-.welcome{
-  margin-bottom: 3em;
-}
-
-#post-list{
-  font-size: 1.5em;
-}
-
-#author{
-  font-size: .7em;
-}
 
 #catname{
   margin-bottom: 1em;
 }
 
-html, body, .container { 
-  height: 100%;
-}
-
-html, body, { 
-  width: 100%;
-}
 
 .navbar {
   margin-bottom: 0;
 }
 
-a{
-  color: black;
-}
 
 a:hover{
   color: grey;

@@ -50,3 +50,6 @@ end
 gem 'rails_12factor', group: :production
 gem "paperclip", "~> 4.3"
 gem 'bootsy', github: 'volmer/bootsy'
+gem "aws-sdk-v1"
+gem 'fog'
+gem "fog-aws"

@@ -1,72 +1,73 @@
+<div class = "container">
+  <h2> Welcome new user, please fill out the form below! </h3>
 
-<h2> Welcome new user, please fill out the form below! </h3>
-
-<%= form_for @user do |f| %>
-<div class="row">
-  <div id = "email">
-    <%= f.label 'Email*', class: "col-xs-12" %>
-    <%= f.text_field :email, class: "col-xs-9" %>
+  <%= form_for @user do |f| %>
+  <div class="row">
+    <div id = "email">
+      <%= f.label 'Email*', class: "col-xs-12" %>
+      <%= f.text_field :email, class: "col-xs-9" %>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div id = "username">
-    <%= f.label 'Username*', class: "col-xs-12" %>
-    <%= f.text_field :username, class: "col-xs-9" %>
+  <div class="row">
+    <div id = "username">
+      <%= f.label 'Username*', class: "col-xs-12" %>
+      <%= f.text_field :username, class: "col-xs-9" %>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div id = "password">
-    <%= f.label 'Password*', class: "col-xs-12"%>
-    <%= f.password_field :password , class: "col-xs-9"%>
+  <div class="row">
+    <div id = "password">
+      <%= f.label 'Password*', class: "col-xs-12"%>
+      <%= f.password_field :password , class: "col-xs-9"%>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div id = "password">
-    <%= f.label 'Do you want to teach', class: "col-xs-12"%>
-    <%= f.check_box :teacher, class: "col-xs-9"%>
+  <div class="row">
+    <div id = "password">
+      <%= f.label 'Do you want to teach', class: "col-xs-12"%>
+      <%= f.check_box :teacher, class: "col-xs-9"%>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div id = "website">
-    <%= f.label :website, class: "col-xs-12" %>
-    <%= f.text_field :website, class: "col-xs-9" %>
+  <div class="row">
+    <div id = "website">
+      <%= f.label :website, class: "col-xs-12" %>
+      <%= f.text_field :website, class: "col-xs-9" %>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div id = "facebook">
-    <%= f.label :facebook, class: "col-xs-12" %>
-    <%= f.text_field :facebook, class: "col-xs-9" %>
+  <div class="row">
+    <div id = "facebook">
+      <%= f.label :facebook, class: "col-xs-12" %>
+      <%= f.text_field :facebook, class: "col-xs-9" %>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div id = "about">
-    <%= f.label :about, class: "col-xs-12" %>
-    <%= f.text_area :about, class: "col-xs-9" %>
+  <div class="row">
+    <div id = "about">
+      <%= f.label :about, class: "col-xs-12" %>
+      <%= f.bootsy_area :about, class: "col-xs-9" %>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div id = "experience">
-    <%= f.label :experience, class: "col-xs-12" %>
-    <%= f.text_area :experience, class: "col-xs-9" %>
+  <div class="row">
+    <div id = "experience">
+      <%= f.label :experience, class: "col-xs-12" %>
+      <%= f.bootsy_area :experience, class: "col-xs-9" %>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <%= f.file_field :avatar %>
-</div
+  <div class="row">
+    <%= f.file_field :avatar %>
+  </div
 
-<div class="row">
-  <div id = "submit">
-    <%= f.submit 'Signup', class: "btn btn-primary" %>
+  <div class="row">
+    <div id = "submit">
+      <%= f.submit 'Signup', class: "btn btn-primary" %>
+    </div>
   </div>
-</div>
-<% end %>
+  <% end %>
 
-<p> Already have an account? <%= link_to 'Login', login_path %> </p>
+  <p> Already have an account? <%= link_to 'Login', login_path %> </p>
+</div>

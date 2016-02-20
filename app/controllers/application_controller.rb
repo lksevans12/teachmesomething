@@ -4,13 +4,23 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   add_flash_types :success, :notice, :danger
   helper_method :current_user, :logged_in?, :authenticate_user!
+  before_filter :set_categories
+  before_filter :set_tags
 
-  private
 
   def authenticate_user!
     if !logged_in?
       redirect_to login_path, :notice => 'You must be logged in to view that page'
     end
+  end
+
+
+  def set_categories
+    @categories ||= Category.all
+  end
+
+   def set_tags
+    @tags ||= Tag.all.order('updated_at ASC').limit(10)
   end
 
 
