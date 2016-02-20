@@ -54,3 +54,4 @@ gem 'bootsy', github: 'volmer/bootsy'
 gem "aws-sdk-v1"
 gem 'fog'
 gem "fog-aws"
+gem "will_paginate-bootstrap"
