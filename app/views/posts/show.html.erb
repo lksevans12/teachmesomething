@@ -1,7 +1,7 @@
 <div class = "container">
 
   <div class = "col-xs-12 col-sm-12 col-m-12">
-    <div class = "jumbotron" style = "background-image: url(<%= @post.photo.url %>)">
+    <div class = "jumbotron" id = "jumbo-photo" style = "background-image: url(<%= @post.photo.url %>)">
       <div class="transbox">
         <h1> <%= @post.title.capitalize %> </h1>
         <p id = "post-author"> By <%= link_to @post.user.username, user_path(@post.user_id) %> </p>
