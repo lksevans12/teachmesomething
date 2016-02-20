@@ -10,7 +10,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    unless_teacher
     @post = Post.new(post_params.merge(user_id: current_user.id))
     if @post.save
       redirect_to post_path(@post.id)
