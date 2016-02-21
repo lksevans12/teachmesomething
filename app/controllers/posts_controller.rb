@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!, only: [:new,:create, :edit, :update]
 
   def index
-    @posts = Post.all.get_posts_by_newest.limit(15)
+    @posts = Post.all.paginate(:page => params[:page], :per_page => 15)
   end
 
   def new 
