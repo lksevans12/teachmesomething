@@ -6,6 +6,14 @@ html {
     font-family: 'Playfair Display', serif;
 }
 
+#already{
+  text-align: center;
+}
+
+#old-user{
+  margin-top: 50px;
+}
+
 .topnav {
     font-size: 14px; 
 }
@@ -106,9 +114,6 @@ div.transbox h1 {
   margin: auto;
 }
 
-.sidebar-nav-fixed {
-  width:20%;
-}
 
 .post-time{
   font-size: x-small;
@@ -206,9 +211,22 @@ li{
 
 .navbar {
   margin-bottom: 0;
+  -webkit-box-shadow: -1px 9px 18px 3px rgba(105,105,105,0.84);
+  -moz-box-shadow: -1px 9px 18px 3px rgba(105,105,105,0.84);
+  box-shadow: -1px 9px 18px 3px rgba(105,105,105,0.84);
+}
+
+.navbar a{
+  color: #a9cab9;
 }
 
 
 a:hover{
-  color: grey;
+  color: #a9cab9;
+}
+
+body { padding-top: 50px; }
+
+p.copyright {
+    margin: 15px 0 0;
 }

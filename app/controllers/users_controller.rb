@@ -7,21 +7,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_permit)
-    if user.save
+    @user = User.new(user_permit)
+    if @user.save
       session[:user_id] = user.id
       redirect_to user_path(user.id)
     else
-      @user = @user.errors.full_messages
+      flash[:danger] = @user.errors.full_messages
       redirect_to signup_path
     end
   end
 
   def show
     @user = User.find(params[:id])
-    if request.xhr?
-      return render :'reviews/new', {layout: false}
-    end
   end
 
   def edit
@@ -33,14 +30,13 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_permit)
       redirect_to user_path(@user)
     else
-      flash[:alert] = @user.errors.full_messages
+      flash[:danger] = @user.errors.full_messages
       render :'edit'
     end
   end
 
   def destroy
     user = User.find_by(id: params[:id])
-    @user.skip_reconfirmation!
     user.destroy
     session.clear
     redirect_to root_path

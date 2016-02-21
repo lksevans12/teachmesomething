@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-  root to: 'posts#index'
+  root to: 'welcome#index'
   resources :categories, only: [:index, :show]
   resources :posts do
     resources :reviews, only: [:new, :create, :destroy]
