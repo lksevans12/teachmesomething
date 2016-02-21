@@ -216,9 +216,17 @@ li{
   box-shadow: -1px 9px 18px 3px rgba(105,105,105,0.84);
 }
 
+.navbar a{
+  color: #a9cab9;
+}
+
 
 a:hover{
-  color: grey;
+  color: #a9cab9;
 }
 
 body { padding-top: 50px; }
+
+p.copyright {
+    margin: 15px 0 0;
+}
