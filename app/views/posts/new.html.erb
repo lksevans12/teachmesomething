@@ -61,6 +61,6 @@
       </div>
     </div>
   <% else %>
-    <h1> We're so glad your interested in posting, however, you MUST be a 'teacher' to submit! <%= link_to 'Edit your status to become a teacher!' %>
+    <h1> We're so glad your interested in posting, however, you MUST be a 'teacher' to submit! <%= link_to 'Edit your status to become a teacher!', edit_user_path(current_user.id) %>
   <% end %>
 </div>
