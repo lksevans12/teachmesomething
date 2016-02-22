@@ -9,7 +9,19 @@
     <% end %>
 
 
-    <h2 id = "new-post-info"> We're so glad you want to share your knowledge! Please follow the guidelines while filling out the form below! </h2>
+    <div class = "col-xs-12 col-s-12 col-md-12">
+      <div id = "post-instr">
+        <h2 id = "new-post-info"> We're so glad you want to share your knowledge! Please follow the guidelines while filling out the form below! </h2>
+
+        <h3 id = "guidelines">Guidelines:</h3>
+
+          <li id = "guides"> Keep your language simple and easy to understand -- if you wouldn't write or say it to a friend, its probably best not to say it to our users. </li>
+          <li id = "guides"> No cursing, swearing. No hateful or discriminatory languages. </li>
+          <li id = "guides"> Don't write about anything you don't know about. Our users trust us to screen our teachers.</li>
+          <li id = "guides"> Keep it fun!</li>
+          <li id = "guides"> All posts are moderated and will be removed if they violate the guidelines.</li>
+      </div>
+    </div>
 
 
     <div id = "new-post">
@@ -17,33 +29,33 @@
       <div class="row">
         <div class="form-group">
           <%= f.label 'What are you teaching about today?*', class: "col-xs-7"%>
-          <%= f.text_field :title, class: "col-xs-6" %>
+          <%= f.text_field :title, class: "col-xs-10 col-sm-10 col-md-10" %>
         </div>
       </div>
 
       <div class="row">
         <div class="form-group">
-          <%= f.label " ", class: "col-xs-7" %><br>
-          <%= f.bootsy_area :body, cols: "120", rows: "30", id: "field", class: "col-xs-12 col-sm-6 col-md-8" %>
+          <%= f.label " ", class: "col-xs-12" %><br>
+          <%= f.bootsy_area :body, cols: "120", rows: "30", id: "field", class: "col-xs-10 col-sm-10 col-md-10" %>
         </div>
       </div>
 
       <div class="row">
         <div class="form-group">
-          <%= f.label 'Tags (separated by commas and NO spaces, please!!)', class: "col-xs-7"%>
-          <%= f.text_field :all_tags, class: "col-xs-6" %>
+          <%= f.label 'Tags (separated by commas and NO spaces, please!!)', class: "col-xs-12"%>
+          <%= f.text_field :all_tags, class: "col-xs-10 col-sm-10 col-md-10" %>
         </div>
       </div>
 
       <div class="row">
-        <%= f.label 'Please upload a cover photo for your post.' %>
-        <%= f.file_field :photo, class: "jumbo-photo" %>
+        <%= f.label 'Please upload a cover photo for your post.', class: "col-xs-12" %>
+        <%= f.file_field :photo, class: "jumbo-photo col-xs-10 col-sm-10 col-md-10" %>
       </div>
 
       <div class="row">
         <div class="form-group">
         <%= f.label :category, class: "col-xs-12" %>
-        <%= f.collection_select(:category_id, Category.all, :id, :category_name, class: "col-xs-6") %>
+        <%= f.collection_select(:category_id, Category.all, :id, :category_name, class: "col-xs-10 col-sm-10 col-md-10") %>
         </div>
       </div>
 
@@ -55,11 +67,6 @@
       <% end %>
     </div>
 
-    <div class = "tips">
-      <div class = "col-xs-5 pull-right">
-
-      </div>
-    </div>
   <% else %>
     <h1> We're so glad your interested in posting, however, you MUST be a 'teacher' to submit! <%= link_to 'Edit your status to become a teacher!', edit_user_path(current_user.id) %>
   <% end %>
