@@ -25,15 +25,18 @@
   </div>
 </div>
 
-<div class="row">
-  <div class = "all-posts">
-    <% @posts.each do |post| %>
-    <div class=" col-xs-6 col-s-10 col-md-4 portfolio-item">
-      <hr class="section-heading-spacer">
-        <li><%= image_tag(post.photo.url, size: "700x400", :class => "img-circle img-responsive") %> 
-          <h3><%= link_to post.title, post_path(post.id) %><h3>
-          By <%= link_to post.user.username, user_path(post.user.id) %></li>
+<div class = "container">
+  <h1 id = "new-posts"> Newest Posts </h1>
+  <div class="row">
+    <div class = "all-posts">
+      <% @posts.each do |post| %>
+      <div class=" col-xs-6 col-s-10 col-md-4 portfolio-item">
+        <hr class="section-heading-spacer">
+          <li><%= image_tag(post.photo.url, size: "700x400", :class => "img-circle img-responsive") %> 
+            <h3><%= link_to post.title, post_path(post.id) %><h3>
+            By <%= link_to post.user.username, user_path(post.user.id) %></li>
+      </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
