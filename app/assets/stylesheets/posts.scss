@@ -1,0 +1,63 @@
+.business-header {
+    height: 400px;
+    background-color: #a9cab9;
+    margin-bottom: 2em;
+}
+
+tagline {
+    text-shadow: 0 0 10px #000;
+    color: #fff;
+}
+
+div.transbox {
+  margin: 30px;
+  background-color: #ffffff;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+div.transbox h1 {
+  margin: 5%;
+  font-weight: bold;
+  color: black;
+}
+
+#post-body{
+  margin: auto;
+}
+
+.jumbotron{
+  text-align: center;
+  color: black;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  overflow: hidden;
+  background-color: grey;
+  font-weight: bold;
+}
+
+#edit, #favorites {
+  display: inline-block;
+}
+
+.tab-content{
+  margin-top: 1em;
+}
+
+#post-instr{
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+#guides{
+  list-style-type: square;;
+}
+
+#new-post{
+  margin-top: 2em;
+}
+
+#new-post-info{
+  text-align: center;
+}
