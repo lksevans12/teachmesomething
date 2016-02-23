@@ -98,10 +98,10 @@ ActiveRecord::Schema.define(version: 20160219185453) do
     t.string   "email",               null: false
     t.string   "username",            null: false
     t.string   "password_digest",     null: false
-    t.boolean  "teacher",             null: false
+    t.boolean  "teacher"
     t.string   "website"
     t.string   "facebook"
-    t.string   "experience",          null: false
+    t.string   "experience"
     t.string   "about"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false

@@ -1,8 +1,14 @@
-<div class = "container">
-  <div class = "col-xs-12 col-s-12 col-m-12">
-    <h2 id = "catname"> <%= @category.category_name %> </h2>
+<header class="business-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 id = "tagline"><%= @category.category_name %></h1>
+      </div>
+    </div>
   </div>
+</header>
 
+<div class = "container">
   <div class="row">
     <% @posts.each do |post| %>
     <div class=" col-xs-10 col-s-6 col-md-4 portfolio-item">

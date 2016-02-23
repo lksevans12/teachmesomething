@@ -1,7 +1,14 @@
+<header class="business-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 id = "tagline">Posts tagged with <%= @tag.title %></h1>
+      </div>
+    </div>
+  </div>
+</header>
+
 <div class = "container">
-
-  <h1> Posts tagged with <%= @tag.title %></h1>
-
   <div class = "row">
     <% @tag.posts.each do |post| %>
       <div class=" col-xs-10 col-s-6 col-md-4 portfolio-item">

@@ -40,41 +40,6 @@
   </div>
 
   <div class="row">
-    <div id = "teacher">
-      <%= f.label 'Do you want to teach', class: "col-xs-12"%>
-      <%= f.check_box :teacher, id: "teacher-option", class: "col-xs-9", onchange: "toggleCheckbox(this)"%>
-    </div>
-  </div>
-
-  <div class="row">
-    <div id = "website">
-      <%= f.label :website, class: "col-xs-12" %>
-      <%= f.text_field :website, class: "col-xs-9" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div id = "facebook">
-      <%= f.label :facebook, class: "col-xs-12" %>
-      <%= f.text_field :facebook, class: "col-xs-9" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div id = "about">
-      <%= f.label :about, class: "col-xs-12" %>
-      <%= f.bootsy_area :about, class: "col-xs-9" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div id = "experience" style="display:none;">
-      <%= f.label :experience, class: "col-xs-12" %>
-      <%= f.bootsy_area :experience, class: "col-xs-9" %>
-    </div>
-  </div>
-
-  <div class="row">
     <%= f.file_field :avatar %>
   </div
 

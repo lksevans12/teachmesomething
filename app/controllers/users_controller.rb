@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_permit)
     if @user.save
-      session[:user_id] = user.id
-      redirect_to user_path(user.id)
+      session[:user_id] = @user.id
+      redirect_to edit_user_path(user.id)
     else
       flash[:danger] = @user.errors.full_messages
       redirect_to signup_path
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by(id: params[:id])
-    if @user.update_attributes(user_permit)
+    if @user.update_attributes(update_params)
       redirect_to user_path(@user)
     else
       flash[:danger] = @user.errors.full_messages
@@ -45,6 +45,10 @@ class UsersController < ApplicationController
   private
 
   def user_permit
+    params.require(:user).permit(:email, :username, :password, :avatar)
+  end
+
+  def update_params
     params.require(:user).permit(:email, :username, :password, :about, :website, :facebook, :avatar, :experience, :teacher)
   end
 
