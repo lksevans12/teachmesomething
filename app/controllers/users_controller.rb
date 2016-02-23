@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_permit)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to edit_user_path(user.id)
+      redirect_to edit_user_path(@user.id)
     else
       flash[:danger] = @user.errors.full_messages
       redirect_to signup_path
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   private
 
   def user_permit
-    params.require(:user).permit(:email, :username, :password, :avatar)
+    params.require(:user).permit(:email, :username, :password, :teacher, :avatar)
   end
 
   def update_params
