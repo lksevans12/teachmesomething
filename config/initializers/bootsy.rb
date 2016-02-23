@@ -9,40 +9,40 @@ Bootsy.setup do |config|
      lists: true,
      html: true,
      link: true,
-     image: true,
+     image: false,
      color: true
    }
   #
   # Image versions available
   #  Possible values: :small, :medium, :large and/or :original
-  config.image_versions_available = [:small, :medium, :large, :original]
+  #config.image_versions_available = [:small, :medium, :large, :original]
   #
   #
   # SMALL IMAGES
   #
   # Width limit for small images
-   config.small_image[:width] = 160
+  #config.small_image[:width] = 160
   #
   # Height limit for small images
-   config.small_image[:height] = 160
+  #config.small_image[:height] = 160
   #
   #
   # MEDIUM IMAGES
   #
   # Width limit for medium images
-   config.medium_image[:width] = 360
+  #config.medium_image[:width] = 360
   #
   # Height limit for medium images
-   config.medium_image[:height] = 360
+  #config.medium_image[:height] = 360
   #
   #
   # LARGE IMAGES
   #
   # Width limit for large images
-   config.large_image[:width] = 760
+  #config.large_image[:width] = 760
   #
   # Height limit for large images
-   config.large_image[:height] = 760
+  #config.large_image[:height] = 760
   #
   #
   # Whether user can destroy uploaded files
@@ -55,7 +55,7 @@ Bootsy.setup do |config|
   #   'fog' to your Gemfile and create and configure your credentials in an
   #   initializer file, as described in Carrierwave's docs:
   #   https://github.com/carrierwaveuploader/carrierwave#using-amazon-s3
-  config.storage = :fog
+    config.storage = :aws
   #
   #
   # Store directory (inside 'public') for storage = :file
