@@ -3,34 +3,36 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="transbox">
-          <h1> <%= @post.title.capitalize %> </h1>
-          <p class = "post-author"> By <%= link_to @post.user.username, user_path(@post.user_id) %> </p>
+          <h1> <%= @post.title.upcase %> </h1>
+          <p class = "post-author"> By <%= link_to @post.user.username.upcase, user_path(@post.user_id) %> </p>
           <p class = "post-time"> <%= @post.created_at.strftime(" %b. %d, %Y") %></p>
         </div>
 
-        <div class = "col-xs-6 col-xs-offset-4 col-s-6 col-s-offset-4 col-md-6 col-md-offset-5">
-          <div class = "btn-larg" id = "edit">
-            <% if current_user %>
-              <% if current_user.id == @post.user_id %>
-                <%= link_to 'Edit post', edit_post_path(@post), class: "btn btn-primary" %>
-              <% end %>
-            <% end %>
-          </div>
-
-          <div class = "btn-lrg" id="favorites">
-            <% if current_user %>
-              <% if current_user != @post.user_id %>
-                <% unless current_user.favorite_posts.exists?(id: @post.id) %>
-                  <%= link_to 'Add post to favorites', post_favorite_posts_path(post_id: @post), method: :post, class: "btn btn-primary" %>
-                <% else %>
-                  <%= link_to 'Remove Favorite', post_favorite_post_path(post_id:@post.id, favorite_post_id: @post.id), method: :delete, class: "btn btn-default" %>
+        <div class = "col-xs-offet-5 col-s-offet-5 col-md-offset-5">
+          <div id = "post-buttons">
+            <div class = "btn-larg" id = "edit">
+              <% if current_user %>
+                <% if current_user.id == @post.user_id %>
+                  <%= link_to 'Edit post', edit_post_path(@post), class: "btn btn-primary" %>
                 <% end %>
               <% end %>
+            </div>
 
-              <% @post.average_rating.times do %>
-                <%= image_tag("star.png", size: "20x20", class: "img-rounded img-responsive") %>
-              <% end %></p>
-            <% end %>
+            <div class = "btn-lrg" id="favorites">
+              <% if current_user %>
+                <% if current_user != @post.user_id %>
+                  <% unless current_user.favorite_posts.exists?(id: @post.id) %>
+                    <%= link_to 'Add post to favorites', post_favorite_posts_path(post_id: @post), method: :post, class: "btn btn-primary" %>
+                  <% else %>
+                    <%= link_to 'Remove Favorite', post_favorite_post_path(post_id:@post.id, favorite_post_id: @post.id), method: :delete, class: "btn btn-default" %>
+                  <% end %>
+                <% end %>
+
+                <% @post.average_rating.times do %>
+                  <%= image_tag("star.png", size: "20x20", class: "img-rounded img-responsive") %>
+                <% end %></p>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
@@ -41,11 +43,15 @@
 <div class = "container">
 
   <div class = "col-xs-12 col-sm-12 col-m-12">
-    <p id = "post-body"> <%= @post.body.html_safe  %></p>
-    <p>Tags : <% @post.tags.map do |tag| %>
+    <div id = "post-body">
+       <%= @post.body.html_safe  %>
+    </div>
+
+    <div id = "post-tags">
+      Tags : <% @post.tags.map do |tag| %>
       <%= link_to tag.title, tags_path(tag.title), class: "index-post-link" %>, 
       <% end %>
-    </p>
+    </div>
   </div>
 
   <div id="profile-content" class="col-xs-12 col-s-12 col-md-12">

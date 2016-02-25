@@ -69,3 +69,21 @@
 .all-posts{
   padding-top: 2em;
 }
+
+.link-post{
+  background-color: #222222;
+  color: white;
+  padding: 14px 25px;
+  text-align: center; 
+  text-decoration: none;
+  display: inline-block;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+
+}
+
+.link-post:hover{
+  background-color: #a9cab9;
+  color: #222222;
+}

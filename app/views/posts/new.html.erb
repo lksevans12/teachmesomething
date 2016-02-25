@@ -19,6 +19,7 @@
           <li id = "guides"> No cursing, swearing. No hateful or discriminatory languages. </li>
           <li id = "guides"> Don't write about anything you don't know about. Our users trust us to screen our teachers.</li>
           <li id = "guides"> Keep it fun!</li>
+          <li id = "guides"> All boxes with '*' are required!</li>
           <li id = "guides"> All posts are moderated and will be removed if they violate the guidelines.</li>
       </div>
     </div>
@@ -35,14 +36,14 @@
 
       <div class="row">
         <div class="form-group">
-          <%= f.label " ", class: "col-xs-12" %><br>
-          <%= f.bootsy_area :body, cols: "120", rows: "30", id: "field", class: "col-xs-10 col-sm-10 col-md-10" %>
+          <%= f.label "*", class: "col-xs-12" %><br>
+          <%= f.bootsy_area :body, cols: "120", rows: "30", id: "field", class: "col-xs-12 col-sm-12 col-md-12" %>
         </div>
       </div>
 
       <div class="row">
         <div class="form-group">
-          <%= f.label 'Tags (separated by commas and NO spaces, please!!)', class: "col-xs-12"%>
+          <%= f.label 'Tags (separated by commas and NO spaces, please!!)*', class: "col-xs-12"%>
           <%= f.text_field :all_tags, class: "col-xs-10 col-sm-10 col-md-10" %>
         </div>
       </div>
@@ -54,7 +55,7 @@
 
       <div class="row">
         <div class="form-group">
-        <%= f.label :category, class: "col-xs-12" %>
+        <%= f.label 'Which category does your post belong in?*', class: "col-xs-12" %>
         <%= f.collection_select(:category_id, Category.all, :id, :category_name, class: "col-xs-10 col-sm-10 col-md-10") %>
         </div>
       </div>
