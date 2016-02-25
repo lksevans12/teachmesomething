@@ -26,10 +26,13 @@ body {
   font-family: 'Playfair Display', serif;
 }
 
+.navbar-inverse .navbar-brand {
+  color: #a9cab9;
+}
+
 .topnav {
     font-size: 14px; 
 }
-
 
 .portfolio-item {
     margin-bottom: 25px;
@@ -37,10 +40,9 @@ body {
     text-align: center;
 }
 
-
 @media all and (max-width: 1200px) { /* screen size until 1200px */
     body {
-        font-size: 1.5em; /* 1.5x default size */
+        font-size: 2em; /* 1.5x default size */
     }
     h4, h3,h2, h1{
       font-size: 3em;
@@ -54,7 +56,7 @@ body {
 
 @media all and (max-width: 1000px) { /* screen size until 1000px */
     body {
-        font-size: 1.2em; /* 1.2x default size */
+        font-size: 1.5em; /* 1.2x default size */
         }
     h4,h3,h2,h1{
       font-size: 2.5em;
@@ -66,7 +68,7 @@ body {
     }
 @media all and (max-width: 500px) { /* screen size until 500px */
     body,  {
-        font-size: 0.8em; /* 0.8x default size */
+        font-size: 1em; /* 0.8x default size */
         }
     h4,h3,h2,h1 {
         font-size: 2em;
@@ -92,13 +94,8 @@ li{
   box-shadow: -1px 9px 18px 3px rgba(105,105,105,0.84);
 }
 
-.navbar a{
-  color: #a9cab9;
-}
-
-
 a:hover{
-  color: #a9cab9;
+  color: #87A194;
 }
 
 
