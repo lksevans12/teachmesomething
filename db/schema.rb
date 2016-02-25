@@ -36,14 +36,6 @@ ActiveRecord::Schema.define(version: 20160219185453) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.text     "body",       null: false
-    t.integer  "user_id",    null: false
-    t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "entry_tags", force: :cascade do |t|
     t.integer  "post_id",    null: false
     t.integer  "tag_id",     null: false
@@ -68,7 +60,6 @@ ActiveRecord::Schema.define(version: 20160219185453) do
     t.string   "title",              null: false
     t.text     "body",               null: false
     t.integer  "user_id",            null: false
-    t.string   "website"
     t.integer  "category_id",        null: false
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -76,6 +67,14 @@ ActiveRecord::Schema.define(version: 20160219185453) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text     "body",       null: false
+    t.integer  "user_id",    null: false
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -95,16 +94,16 @@ ActiveRecord::Schema.define(version: 20160219185453) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",               null: false
-    t.string   "username",            null: false
-    t.string   "password_digest",     null: false
-    t.boolean  "teacher"
+    t.string   "email",                               null: false
+    t.string   "username",                            null: false
+    t.string   "password_digest",                     null: false
+    t.boolean  "teacher",             default: false, null: false
     t.string   "website"
     t.string   "facebook"
     t.string   "experience"
     t.string   "about"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
