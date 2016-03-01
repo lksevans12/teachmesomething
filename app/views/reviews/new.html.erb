@@ -1,23 +1,21 @@
 <div class = "container">
+
+  <h1> How was your experience with <%= @reviewable.username %>?</h1> 
+
   <div id = "review-form">
 
     <%= form_for [@reviewable, @review] do |f| %>
-
     <div class = "row">
+  
       <div id = "review-body">
-        <%= f.label 'Review', class: "col-xs-12" %>
-        <%= f.text_area :body,cols: "10", rows: "5", class: "col-xs-6" %>
+        <%= f.label " ", class: "col-xs-12 col-s-12 col-m-12" %>
+        <%= f.text_area :body,cols: "10", rows: "5", class: "col-xs-12 col-s-12 col-m-12" %>
       </div>
-    </div> 
-
-    <div class  = "row">
+ 
       <div id = "review-score">
-        <%= f.label 'Score', class: "col-xs-12" %>
-        <%= f.select :score, [1,2,3,4,5], class: "col-xs-9" %>
+        <p><%= f.label 'Overall Score: ', class: "col-xs-12 col-s-12 col-m-12" %></p>
+        <p><%= f.select :score, [1,2,3,4,5], class: "col-xs-12 col-s-12 col-m-12" %></p>
       </div>
-    </div>
-
-    <div class = "row"
       <div id = "submit-button">
         <%= f.submit %>
       </div>

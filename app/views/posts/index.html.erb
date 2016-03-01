@@ -13,10 +13,12 @@
   <div class="row">
     <% @posts.each do |post| %>
     <div class=" col-xs-10 col-s-6 col-md-4 portfolio-item">
-      <ol>
-      <li><p><%= link_to image_tag(post.photo.url, size: "700x400", :class => "img-circle img-responsive"), post_path(post.id) %> </p>
-          <p><%= link_to post.title, post_path(post.id), class: "link-post" %></p></li>
-      </ol>
+      <div class="clearfix visible-xs-block"></div>
+        <ol>
+        <li><p><%= link_to image_tag(post.photo.url, :class => "img-circle img-responsive"), post_path(post.id), id: "post-pics" %> </p>
+            <p><%= link_to post.title, post_path(post.id), class: "link-post" %></p></li>
+        </ol>
+      </div>
     </div>
     <% end %>
   </div>
