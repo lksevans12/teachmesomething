@@ -1,0 +1,30 @@
+
+<div role="tabpanel" class="tab-pane fade" id="post-reviews">
+  <ul id = "previews">
+    <% unless current_user == @post.user_id %>
+      <p><%= link_to "Add a Review", new_post_review_path(@post), id: "new-review", class: "btn btn-default" %></p>
+    <% end %>
+    <div id = "reviews-post">
+      <% if @post.reviews.exists? %>
+        <% @post.reviews.each do |review| %>
+          <li>Rating:
+            <% review.score.times do %>
+            <%= image_tag("star.png", size: "20x20") %>
+            <% end %>
+          </li>
+
+          <li>From <%=link_to review.reviewer.username, user_path(review.reviewer) %> on <%= review.created_at.strftime("%B %d, %Y") %> <br>
+            <%= review.body %>
+              <% if current_user %>
+            <p> <% if review.user_id == current_user.id %>
+                  <%= link_to "Delete Review", post_review_path(post_id: @post, id: review), method: :delete %></p>
+                <% end %>
+              <% end %>
+          </li>
+        <% end %>
+      <% else %>
+          <p> This post has no reviews. </p>
+      <% end %>
+    </div>
+  </ul>
+</div>
