@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
    def set_tags
-    @tags ||= Tag.all.order('updated_at ASC').limit(10)
+    @tags ||= Tag.all.order('updated_at DESC').limit(10)
   end
 
 
