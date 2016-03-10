@@ -4,6 +4,7 @@ html {
     height: 100%;
     overflow-x:hidden;
     font-family: 'Playfair Display', serif;
+    background-color: #E3E3E3;
 }
 
 body { 
@@ -44,12 +45,17 @@ body {
     body {
         font-size: 2em; /* 1.5x default size */
     }
-    h4, h3,h2, h1{
-      font-size: 3em;
-      font-weight: bold;
+    h4, h3,h2{ 
+      font-size: 1em;
+    }
+    h1{
+      font-size: 1.5em;
     }
     p{
-      font-size: 2.5em;
+      font-size: 1em;
+    }
+    #user-photo{
+
     }
 
 }
@@ -58,12 +64,16 @@ body {
     body {
         font-size: 1.5em; /* 1.2x default size */
         }
-    h4,h3,h2,h1{
-      font-size: 2.5em;
+    h4,h3,h2{
+      font-size: 1em;
       font-weight: bold;
       }
+    h1{
+      font-size: 1.5em;
+      font-weight: bold;
+    }
     p{
-      font-size: 2em;
+      font-size: 1em;
     }
     }
 @media all and (max-width: 500px) { /* screen size until 500px */
@@ -71,12 +81,25 @@ body {
         font-size: 1em; /* 0.8x default size */
         }
     h4,h3,h2,h1 {
-        font-size: 2em;
+        font-size: 1.5em;
         font-weight: bold;
     }
     p{
       font-size: 1.5em;
     }
+    #post-photo{
+      height: 180px;
+      width: 150px;
+    }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 a{
@@ -99,11 +122,18 @@ a:hover{
 }
 
 
-footer {
-    margin: 50px 0;
-    background-color: #a9cab9;
+.footer {
+  border-top:1px solid #606565;
+  position: relative;
+  margin-top: -150px; /* negative value of footer height */
+  height: 150px;
+  clear:both;
+  padding-top:20px;
+  width: 100%
 }
 
-p.copyright {
-    margin: 15px 0 0;
+p#copyright {
+    margin: 30px 0 0;
+    text-align: center;
+    font-size: x-small;
 }

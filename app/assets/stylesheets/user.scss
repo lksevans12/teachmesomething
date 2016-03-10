@@ -10,6 +10,33 @@
   margin-bottom: 1em;
 }
 
+#user-photo{
+  padding-top: 2em;
+}
+
 .tab-content{
   margin-top: 1em;
+  background-color:#E3E3E3;
+  color: #606565;
+}
+
+.nav-tabs{
+  background-color:#E3E3E3;
+  margin-bottom: 0;
+}
+
+.nav-tabs > li > a{
+  border: medium none;
+}
+.nav-tabs > li > a:hover{
+  background-color: #606565 !important;
+    border: medium none;
+    border-radius: 0;
+    color:#fff;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover{
+    background-color: #606565 !important;
+    color: #fff;
 }

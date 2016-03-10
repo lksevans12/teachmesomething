@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :reviews, only: [:new, :create, :destroy]
     resources :favorite_posts, only: [:create, :destroy]
+    resources :questions, only: [:new, :create, :destroy]
   end
   resources :users do
     resources :reviews, only: [:new, :create, :destroy]
