@@ -1,0 +1,38 @@
+<div class = "container">
+
+  <%= form_for @question do |f| %>
+
+  <div class="row">
+    <div id = "email">
+      <%= f.label 'Question*', class: "col-xs-12" %>
+      <%= f.text_field :question, class: "col-xs-9" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div id = "username">
+      <%= f.label 'Username*', class: "col-xs-12" %>
+      <%= f.text_field :username, class: "col-xs-9" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div id = "password">
+      <%= f.label 'Password*', class: "col-xs-12"%>
+      <%= f.password_field :password , class: "col-xs-9"%>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.file_field :avatar %>
+  </div
+
+  <div class="row">
+    <div id = "submit">
+      <%= f.submit 'Signup', class: "btn btn-primary" %>
+    </div>
+  </div>
+  <% end %>
+
+  <p id = "already"> Already have an account? <%= link_to 'Login', login_path %> </p>
+</div>
