@@ -65,7 +65,7 @@
         <div class = "row">
           <% @postcat.each do |post| %>
             <div class=" col-xs-12 col-s-6 col-md-4 portfolio-item">
-              <li class = "crop"><p><%= link_to image_tag(post.photo.url, size: "400x200", :class => "img-circle img-responsive"), post_path(post.id) %> </p>
+              <li class = "crop"><p><%= link_to image_tag(post.photo.url, size: "350x200", :class => "img-circle "), post_path(post.id) %> </p>
                 <p><p><%= link_to post.title, post_path(post.id), class: "link-post" %></p></p>
               </li>
             </div>
